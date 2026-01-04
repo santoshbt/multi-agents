@@ -1,5 +1,5 @@
+
+practice/multi-agent.ipynb
+practice/temp/
+*.ipynb
 .env
-__pycache__
-multi-agents
-practice/temp
-temp
