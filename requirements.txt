@@ -6,3 +6,4 @@ langchain-tavily
 langchain-experimental
 ipython
 python-dotenv
+langgraph-checkpoint-sqlite

@@ -20,9 +20,14 @@ def main():
 
     initial_state = {"messages": [("user", query)]}
 
+    # Use thread_id to maintain conversation history
+    # Different thread_ids = different conversations
+    config = {"configurable": {"thread_id": "default_conversation"}}
+
     for s in super_graph.stream(
         initial_state,
-        {"recursion_limit": 30}
+        config=config,
+        stream_mode="values"
     ):
         if "__end__" not in s:
             print(s)

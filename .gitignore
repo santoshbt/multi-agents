@@ -3,3 +3,14 @@ practice/multi-agent.ipynb
 practice/temp/
 *.ipynb
 .env
+.python-version
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+.DS_Store
+logs/
+*.log
+data/
+checkpoints.db
+temp/Gold_Price_Increase_October_2023_Summary.txt

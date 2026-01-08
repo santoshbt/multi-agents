@@ -8,6 +8,7 @@ from langgraph.prebuilt import create_react_agent
 # from langchain_community.tools.tavily_search import TavilySearchResults
 from langgraph.graph import StateGraph
 from langgraph.types import Command
+from langgraph.checkpoint.sqlite import SqliteSaver
 from state import State
 from supervisor import make_supervisor_node
 from config import llm
@@ -56,4 +57,8 @@ super_builder.add_conditional_edges(
 super_builder.add_edge("research_team", "supervisor")
 super_builder.add_edge("writing_team", "supervisor")
 
-super_graph = super_builder.compile()
+# Initialize checkpointer for memory persistence
+import sqlite3
+db_conn = sqlite3.connect("checkpoints.db", check_same_thread=False)
+memory = SqliteSaver(conn=db_conn)
+super_graph = super_builder.compile(checkpointer=memory)
